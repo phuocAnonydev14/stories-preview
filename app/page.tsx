@@ -55,9 +55,9 @@ export default function VietnameseCaseInterface() {
               <SelectContent>
                 {data.map((story) => (
                   <SelectItem key={story.id} value={story.id}>
-                    <div className="flex flex-col">
+                    <div className="flex text-left flex-col">
                       <span className="font-medium">{story.title}</span>
-                      <span className="text-xs text-muted-foreground text-left">
+                      <span className="text-muted-foreground text-left">
                         {story.category}
                       </span>
                     </div>
@@ -69,9 +69,9 @@ export default function VietnameseCaseInterface() {
 
           <div className="mt-2">
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              {/* <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Scale className="w-4 h-4 text-white" />
-              </div>
+              </div> */}
               <div>
                 <div>
                   <img
