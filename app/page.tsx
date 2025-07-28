@@ -35,11 +35,12 @@ export default function VietnameseCaseInterface() {
   };
 
   const formatDate = (dateString: string) => {
+    const invalidCases = ["XX", "undefined", "xx"];
     const [year, month, day] = dateString.split("-");
-    return `${day}/${month}/${year}`;
+    return `${!invalidCases.includes(day.toString()) ? day + "/" : ""}${
+      !invalidCases.includes(month) ? month + "/" : ""
+    }${year}`;
   };
-
-  console.log("selectedData: ", selectedData);
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
