@@ -12,6 +12,7 @@ import {
   Clock,
   DollarSign,
   Scale,
+  ExternalLink,
 } from "lucide-react";
 import { Story } from "@/types/stories";
 import { data } from "@/stories.json";
@@ -229,6 +230,38 @@ export default function VietnameseCaseInterface() {
                   <AlertTriangle className="w-3 h-3 text-white" />
                 </div>
                 <p className="text-sm text-gray-700 flex-1">{highlight}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Articles */}
+        <Card>
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center">
+                <ExternalLink className="w-4 h-4 text-white" />
+              </div>
+              <CardTitle className="text-lg">Bài viết liên quan</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {selectedData.articles.map((article, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors"
+              >
+                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <ExternalLink className="w-3 h-3 text-white" />
+                </div>
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-700 hover:text-green-600 flex-1"
+                >
+                  {article.title}
+                </a>
               </div>
             ))}
           </CardContent>
