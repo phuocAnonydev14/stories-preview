@@ -46,27 +46,26 @@ export default function VietnameseCaseInterface() {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <Select value={selectedData.id} onValueChange={handleStoryChange}>
+            <SelectTrigger className="w-full py-7">
+              <SelectValue placeholder="Chọn vụ án" />
+            </SelectTrigger>
+            <SelectContent>
+              {data.map((story) => (
+                <SelectItem key={story.id} value={story.id}>
+                  <div className="flex text-left flex-col">
+                    <span className="font-medium">{story.title}</span>
+                    <span className="text-muted-foreground text-left">
+                      {story.category}
+                    </span>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <div className="bg-white rounded-lg shadow-sm border p-4">
-          <div className="flex items-center justify-between mb-4">
-            <Select value={selectedData.id} onValueChange={handleStoryChange}>
-              <SelectTrigger className="w-full py-7">
-                <SelectValue placeholder="Chọn vụ án" />
-              </SelectTrigger>
-              <SelectContent>
-                {data.map((story) => (
-                  <SelectItem key={story.id} value={story.id}>
-                    <div className="flex text-left flex-col">
-                      <span className="font-medium">{story.title}</span>
-                      <span className="text-muted-foreground text-left">
-                        {story.category}
-                      </span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
           <div className="mt-2">
             <div className="flex items-start gap-3">
               {/* <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
