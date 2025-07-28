@@ -42,6 +42,8 @@ export default function VietnameseCaseInterface() {
     }${year}`;
   };
 
+  console.log("selectedData: ", selectedData);
+
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto space-y-6">
@@ -74,10 +76,10 @@ export default function VietnameseCaseInterface() {
               <div>
                 <div>
                   <img
-                    src={
-                      "https://images.unsplash.com/photo-1753164682884-047245608dfb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8"
-                    }
+                    src={selectedData.articles?.[0]?.image || ""}
                     className="w-auto rounded-lg mb-2"
+                    alt={selectedData.title}
+                    loading="lazy"
                   />
                 </div>
                 <h2 className="font-semibold text-gray-900 mb-2 text-2xl">

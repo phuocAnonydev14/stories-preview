@@ -20,6 +20,7 @@ interface KeyStat {
 interface Article {
   title: string;
   url: string;
+  image: string
 }
 
 export interface Story {
