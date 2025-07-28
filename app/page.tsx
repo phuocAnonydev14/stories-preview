@@ -142,9 +142,7 @@ export default function VietnameseCaseInterface() {
                     {index === 2 && <Users className="w-4 h-4 text-red-600" />}
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-red-600 mb-1">
-                  {stat.value}
-                </div>
+                <div className="text-2xl font-bold mb-1">{stat.value}</div>
                 <p className="text-sm text-gray-600">{stat.description}</p>
               </CardContent>
             </Card>
