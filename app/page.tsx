@@ -67,14 +67,21 @@ export default function VietnameseCaseInterface() {
             </Select>
           </div>
 
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div className="mt-2">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                <AlertTriangle className="w-4 h-4 text-white" />
+                <Scale className="w-4 h-4 text-white" />
               </div>
               <div>
-                <div>{/* <img src={selectedData.} /> */}</div>
-                <h2 className="font-semibold text-gray-900 mb-2">
+                <div>
+                  <img
+                    src={
+                      "https://images.unsplash.com/photo-1753164682884-047245608dfb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8"
+                    }
+                    className="w-auto rounded-lg mb-2"
+                  />
+                </div>
+                <h2 className="font-semibold text-gray-900 mb-2 text-2xl">
                   {selectedData.title}
                 </h2>
                 <p className="text-sm text-gray-700 mb-3">
@@ -194,8 +201,8 @@ export default function VietnameseCaseInterface() {
                   title={JSON.stringify(event)}
                 >
                   <div className="flex-shrink-0 relative">
-                    <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center border-2 border-blue-500 relative z-10">
-                      <Clock className="w-4 h-4 text-white" />
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center border-2 border-blue-500 relative z-10">
+                      <Clock className="w-4 h-4 text-blue-500" />
                     </div>
                     {index < selectedData.timeline.length - 1 && (
                       <div className="absolute -z-1 -bottom-4 left-1/2 -translate-x-1/2 w-[1px] h-full bg-blue-600"></div>
@@ -234,10 +241,10 @@ export default function VietnameseCaseInterface() {
               <CardTitle className="text-lg">Nhân vật chính</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {selectedData.key_figures.map((figure, index) => (
               <div key={index} className="flex gap-4">
-                <Avatar className="w-12 h-12 bg-purple-100">
+                <Avatar className="w-10 h-10 bg-purple-100">
                   <AvatarFallback className="bg-purple-500 text-white">
                     {figure.name
                       .split(" ")
