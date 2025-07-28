@@ -39,6 +39,8 @@ export default function VietnameseCaseInterface() {
     return `${day}/${month}/${year}`;
   };
 
+  console.log("selectedData: ", selectedData);
+
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto space-y-6">
@@ -102,8 +104,9 @@ export default function VietnameseCaseInterface() {
           <CardContent className="space-y-4">
             {selectedData.timeline
               .sort((a, b) => {
-                const dateA = new Date(a.event_date);
-                const dateB = new Date(b.event_date);
+                // Parse dates carefully for YYYY-MM-DD format
+                const dateA = new Date(a.event_date + "T00:00:00");
+                const dateB = new Date(b.event_date + "T00:00:00");
 
                 // If dates are different, sort by date (newest first)
                 if (dateA.getTime() !== dateB.getTime()) {
