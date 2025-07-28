@@ -235,6 +235,29 @@ export default function VietnameseCaseInterface() {
           </CardContent>
         </Card>
 
+        {/* Key Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {selectedData.key_stats.map((stat, index) => (
+            <Card key={index} className="border-l-4 border-red-500">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                    {index === 0 && <Scale className="w-4 h-4 text-red-600" />}
+                    {index === 1 && (
+                      <DollarSign className="w-4 h-4 text-red-600" />
+                    )}
+                    {index === 2 && <Users className="w-4 h-4 text-red-600" />}
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-red-600 mb-1">
+                  {stat.value}
+                </div>
+                <p className="text-sm text-gray-600">{stat.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
         {/* Articles */}
         <Card>
           <CardHeader className="pb-4">
@@ -266,29 +289,6 @@ export default function VietnameseCaseInterface() {
             ))}
           </CardContent>
         </Card>
-
-        {/* Key Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {selectedData.key_stats.map((stat, index) => (
-            <Card key={index} className="border-l-4 border-red-500">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                    {index === 0 && <Scale className="w-4 h-4 text-red-600" />}
-                    {index === 1 && (
-                      <DollarSign className="w-4 h-4 text-red-600" />
-                    )}
-                    {index === 2 && <Users className="w-4 h-4 text-red-600" />}
-                  </div>
-                </div>
-                <div className="text-2xl font-bold text-red-600 mb-1">
-                  {stat.value}
-                </div>
-                <p className="text-sm text-gray-600">{stat.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
       </div>
     </div>
   );
