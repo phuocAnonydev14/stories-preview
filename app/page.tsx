@@ -73,6 +73,7 @@ export default function VietnameseCaseInterface() {
                 <AlertTriangle className="w-4 h-4 text-white" />
               </div>
               <div>
+                <div>{/* <img src={selectedData.} /> */}</div>
                 <h2 className="font-semibold text-gray-900 mb-2">
                   {selectedData.title}
                 </h2>
@@ -90,6 +91,57 @@ export default function VietnameseCaseInterface() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Highlights */}
+        <Card>
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-yellow-500 rounded flex items-center justify-center">
+                <AlertTriangle className="w-4 h-4 text-white" />
+              </div>
+              <CardTitle className="text-lg">Điểm nổi bật</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {selectedData.highlights.map((highlight, index) => (
+              <div
+                key={index}
+                className="flex gap-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg"
+              >
+                <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="w-3 h-3 text-white" />
+                </div>
+                <p className="text-sm text-gray-700 flex-1">{highlight}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Key Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {selectedData.key_stats.map((stat, index) => (
+            <Card
+              key={index}
+              className="border border-x-0 border-b-0 border-t-4 border-red-500 shadow-md"
+            >
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                    {index === 0 && <Scale className="w-4 h-4 text-red-600" />}
+                    {index === 1 && (
+                      <DollarSign className="w-4 h-4 text-red-600" />
+                    )}
+                    {index === 2 && <Users className="w-4 h-4 text-red-600" />}
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-red-600 mb-1">
+                  {stat.value}
+                </div>
+                <p className="text-sm text-gray-600">{stat.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Timeline */}
@@ -159,7 +211,7 @@ export default function VietnameseCaseInterface() {
                           {event.exact_time}
                         </Badge>
                       )}
-                      {event.estimated_period && (
+                      {event.estimated_period && !event.exact_time && (
                         <Badge variant="outline" className="text-xs bg-blue-50">
                           {event.estimated_period}
                         </Badge>
@@ -214,54 +266,6 @@ export default function VietnameseCaseInterface() {
           </CardContent>
         </Card>
 
-        {/* Highlights */}
-        <Card>
-          <CardHeader className="pb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-yellow-500 rounded flex items-center justify-center">
-                <AlertTriangle className="w-4 h-4 text-white" />
-              </div>
-              <CardTitle className="text-lg">Điểm nổi bật</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {selectedData.highlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="flex gap-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg"
-              >
-                <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="w-3 h-3 text-white" />
-                </div>
-                <p className="text-sm text-gray-700 flex-1">{highlight}</p>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
-
-        {/* Key Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {selectedData.key_stats.map((stat, index) => (
-            <Card key={index} className="border-l-4 border-red-500">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                    {index === 0 && <Scale className="w-4 h-4 text-red-600" />}
-                    {index === 1 && (
-                      <DollarSign className="w-4 h-4 text-red-600" />
-                    )}
-                    {index === 2 && <Users className="w-4 h-4 text-red-600" />}
-                  </div>
-                </div>
-                <div className="text-2xl font-bold text-red-600 mb-1">
-                  {stat.value}
-                </div>
-                <p className="text-sm text-gray-600">{stat.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
         {/* Articles */}
         <Card>
           <CardHeader className="pb-4">
@@ -272,11 +276,11 @@ export default function VietnameseCaseInterface() {
               <CardTitle className="text-lg">Bài viết liên quan</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent>
             {selectedData.articles.map((article, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors"
+                className="flex items-center gap-3 py-3 rounded-lg transition-colors"
               >
                 <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <ExternalLink className="w-3 h-3 text-white" />
