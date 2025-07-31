@@ -15,7 +15,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Story } from "@/types/stories";
-import { data } from "@/stories.json";
+import data from "@/stories.json";
 import {
   Select,
   SelectContent,
@@ -25,7 +25,9 @@ import {
 } from "@/components/ui/select";
 
 export default function VietnameseCaseInterface() {
-  const [selectedData, setSelectedData] = useState<Story>(data[0]);
+  console.log("data", data);
+
+  const [selectedData, setSelectedData] = useState<Story>(data[0] as Story);
 
   const handleStoryChange = (storyId: string) => {
     const story = data.find((s) => s.id === storyId);
@@ -73,12 +75,14 @@ export default function VietnameseCaseInterface() {
               </div> */}
               <div>
                 <div>
-                  <img
-                    src={selectedData.articles?.[0]?.image || ""}
-                    className="w-auto rounded-lg mb-2"
-                    alt={selectedData.title}
-                    loading="lazy"
-                  />
+                  {selectedData?.articles?.[0]?.image && (
+                    <img
+                      src={selectedData?.articles?.[0]?.image || ""}
+                      className="w-auto rounded-lg mb-2"
+                      alt={selectedData.title}
+                      loading="lazy"
+                    />
+                  )}
                 </div>
                 <h2 className="font-semibold text-gray-900 mb-2 text-2xl">
                   {selectedData.title}
@@ -281,7 +285,7 @@ export default function VietnameseCaseInterface() {
             </div>
           </CardHeader>
           <CardContent>
-            {selectedData.articles.map((article, index) => (
+            {selectedData?.articles?.map((article, index) => (
               <div
                 key={index}
                 className="flex items-center gap-3 py-3 rounded-lg transition-colors"
